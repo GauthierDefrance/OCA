@@ -1,6 +1,6 @@
 <header>
     @yield('header')
-    <a href="/" class="sub-border"><img src="img/website_logo.png" alt="Website logo"/></a>
+    <a href="/" class="sub-border"><img src="{{url("img/website_logo.png")}}" alt="Website logo"/></a>
 
     <nav class="navbar">
         <ul class="nav-links">

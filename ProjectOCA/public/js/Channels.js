@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const loggedUserName = document.getElementById('chat').dataset.userName;
         const isCurrentUser = msg.sender?.name === loggedUserName;
 
-        const name = msg.sender?.name || 'Utilisateur';
-        const content = msg.content || '';
+        const name = msg.sender?.name || 'Unknow';
+        const content = msg.content || '[Deleted]';
         const time = msg.created_at ? formatTimestamp(msg.created_at) : '';
 
         if (isCurrentUser) {
@@ -172,8 +172,8 @@ document.addEventListener('DOMContentLoaded', function () {
             form.message.value = '';
             const channelId = btn.value.split('/').pop();
             leaveLink.href = `/channels/${channelId}/quit-channel`;
-            listLink.href = `/channels/${channelId}/quit-channel`;
-            addLink.href = `/channels/${channelId}/quit-channel`;
+            listLink.href = `/channels/${channelId}/group-member`;
+            addLink.href = `/channels/${channelId}/add-member`;
             loadMessages(channelId);
         });
     });
@@ -191,4 +191,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- Export ---
     window.loadMessages = loadMessages;
+
+
+    document.querySelectorAll('.invite-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+            const groupId = button.getAttribute('data-group-id');
+            const senderId = button.getAttribute('data-sender-id');
+            const recipientId = button.getAttribute('data-recipient-id');
+
+            try {
+                const response = await fetch(`/api/channels/${groupId}/accept-invite`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                    },
+                    body: JSON.stringify({
+                        group_id: groupId,
+                        sender_id: senderId,
+                        recipient_id: recipientId
+                    })
+                });
+
+                if (response.ok) {
+                    button.disabled = true;
+                    button.textContent = 'Invitation acceptée';
+                } else {
+                    const error = await response.json();
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    });
+
 });

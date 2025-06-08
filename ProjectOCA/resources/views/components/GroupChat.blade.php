@@ -4,17 +4,17 @@
         <span class="group-name" id="group-name">Group name</span>
         <a id="list-group" href="#">
             <img src="/icons/group.svg" alt="Charts" width="24" height="24" class="icon"/>
-            Group members
+            Members
         </a>
 
         <a id="add-group" href="/channels/{id}/quit-channel" >
             <img src="/icons/user-plus.svg" alt="Charts" width="24" height="24" class="icon"/>
-            Add people
+            Add
         </a>
 
         <a id="leave-group" href="/channels/{id}/quit-channel">
             <img src="/icons/door-open.svg" alt="Charts" width="24" height="24" class="icon"/>
-            Leave group
+            Leave
         </a>
     </nav>
 

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\conversation;
+use App\Models\Invitation;
 use App\Models\Message;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApiChannelController extends Controller
 {
@@ -129,10 +132,90 @@ class ApiChannelController extends Controller
 
     }
 
-    public function quitConfirmChannel(){
+    public function quitConfirmChannel(Request $request, $id)
+    {
+        $conversation = Conversation::findOrFail($id);
+        $user = Auth::user();
 
+        // Détache l'utilisateur de la conversation (sans supprimer les messages)
+        $conversation->users()->detach($user->id);
+
+
+
+        // Redirection (ajuste selon ton application)
+        return redirect()->route('channels.index')->with('success', 'Vous avez quitté la conversation.');
     }
 
+    private function delete_group($id)
+    {
+        $conversation = Conversation::findOrFail($id);
+        $conversation->delete();
+    }
+
+    public function sendInvite(Request $request, $id)
+    {
+        $request->validate([
+            'recipient_email' => ['required', 'email'],
+        ]);
+
+        $conversation = Conversation::findOrFail($id);
+
+        $recipient = User::where('email', $request->input('recipient_email'))->first();
+
+        if (!$recipient) {
+            return redirect()->back()->withErrors(['recipient_email' => 'Utilisateur introuvable.']);
+        }
+
+        // Vérifier s'il n'est pas déjà membre de la conversation
+        if ($conversation->users()->where('user_id', $recipient->id)->exists()) {
+            return redirect()->back()->withErrors(['recipient_email' => 'Cet utilisateur est déjà membre du groupe.']);
+        }
+
+        // Vérifier si une invitation existe déjà et est toujours "pending"
+        $existingInvitation = Invitation::where('conversation_id', $conversation->id)
+            ->where('recipient_id', $recipient->id)
+            ->first();
+
+        if ($existingInvitation) {
+            return redirect()->back()->withErrors(['recipient_email' => 'Une invitation est déjà en attente pour cet utilisateur.']);
+        }
+
+        // Créer une nouvelle invitation
+        Invitation::create([
+            'conversation_id' => $conversation->id,
+            'sender_id' => auth()->id(),
+            'recipient_id' => $recipient->id,
+        ]);
+
+        return redirect()->back()->with('success', 'Invitation envoyée avec succès.');
+    }
+
+
+    public function acceptInvitation(Request $request, $id)
+    {
+        $senderId = $request->input('sender_id');
+        $recipientId = $request->input('recipient_id');
+
+        $invitation = Invitation::where('conversation_id', $id)
+            ->where('sender_id', $senderId)
+            ->where('recipient_id', $recipientId)
+            ->first();
+
+        if (!$invitation) {
+            return response()->json(['message' => 'Invitation introuvable.'], 404);
+        }
+
+        $user = auth()->user();
+
+        $conversation = Conversation::findOrFail($id);
+        if (!$conversation->users->contains($user->id)) {
+            $conversation->users()->attach($user->id);
+        }
+
+        $invitation->delete();
+
+        return response()->json(['message' => 'Invitation acceptée avec succès.']);
+    }
 
 
 }

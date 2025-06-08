@@ -154,7 +154,8 @@ main section {
     max-width: 480px;
     margin: 20px auto;
     padding: 30px;
-    background-image: linear-gradient(to bottom right, #1e293b, rgba(30, 41, 59, 0.5));
+    background-color: rgba(223, 219, 229, 0.75);
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6.172L6.172 0h5.656L0 11.828V6.172zm40 5.656L28.172 0h5.656L40 6.172v5.656zM6.172 12l12-12h3.656l12 12h-5.656L20 3.828 11.828 12H6.172zm12 0L20 10.172 21.828 12h-3.656z' fill='white' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
     border-radius: 8px;
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -607,7 +608,7 @@ a.white:hover img {
 
 .message-left {
     text-align: left;
-    background-color: #ffffff;
+    background-color: #aafff9;
     margin-right: auto;
     max-width: 60%;
     padding: 8px;
@@ -618,4 +619,51 @@ a.white:hover img {
 .timestamp {
     font-size: 0.8em;
     color: #888;
+}
+
+.btn-danger {
+    background-color: #dc3545; /* rouge Bootstrap */
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-danger:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.4);
+}
+
+.alert {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-sizing: border-box;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error,
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }

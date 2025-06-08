@@ -43,8 +43,8 @@ Route::prefix('api')->middleware('auth')->group(function () {
         Route::post('/create-group', 'createGroup')->name("api.create_group");
     });
 
-    Route::prefix('channels/{id}')->controller(\App\Http\Controllers\ApiChannelController::class)
-        ->middleware('auth.channel')->group(function () {
+    Route::prefix('/channels/{id}')->controller(\App\Http\Controllers\ApiChannelController::class)->group(function () {
+        Route::middleware('auth.channel')->group(function () {
             Route::get('/get-all-messages', 'getAllMessages')->name('channels.messages.all');
             Route::get('/get-new-messages', 'getNewMessages')->name('channels.messages.new');
             Route::get('/get-members', 'getMembers')->name('channels.members');
@@ -52,7 +52,12 @@ Route::prefix('api')->middleware('auth')->group(function () {
             Route::post('/send-message', 'sendMessage')->name('channels.send');
             Route::post('/delete-message', 'deleteMessage')->name('channels.delete');
             Route::post('/quit-confirm-channel', 'quitConfirmChannel')->name('channels.quitconfirm');
+            Route::post('/add-member', 'sendInvite')->name('channels.add');
         });
+        Route::post('/accept-invite', 'acceptInvitation');
+        Route::post('/reject-invite', 'rejectInvitation');
+    });
+
 
     Route::prefix('connect')->controller(\App\Http\Controllers\ApiConnectController::class)->group(function () {
         Route::post('/login', 'login')->name('api.login');
@@ -67,31 +72,13 @@ Route::prefix('api')->middleware('auth')->group(function () {
  * Menu de discussions
  */
 Route::prefix('/channels')->middleware('auth.basic')->controller(\App\Http\Controllers\ChannelsController::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('channels.index');
 
-
-    Route::prefix('/{id}')->name("channels.id")->group(function () {
-        Route::get('/quit-channel', 'quitChannel')->name('channels.quit');
-        Route::get('/group-member', 'quitChannel')->name('channels.quit');
-        Route::get('/add-member', 'quitChannel')->name('channels.quit');
+    Route::prefix('/{id}')->name("channels.id")->middleware("auth.channel")->group(function () {
+        Route::get('/quit-channel', 'showQuitChannel')->name('channels.quit');
+        Route::get('/group-member', 'showGroupMember')->name('channels.list');
+        Route::get('/add-member', 'showAddMember')->name('channels.add');
     });
-
-
-    Route::prefix('/channel-create')->group(function () {
-        Route::get('/', 'create')->name('channels.create');
-    });
-
-    Route::prefix('/block')->group(function () {
-        Route::get('/', 'show')->name('channels.show');
-    });
-
-    Route::prefix('/invite')->group(function () {
-        Route::get('/', 'show')->name('channels.show');
-    });
-
-
-
-
 
 });
 
