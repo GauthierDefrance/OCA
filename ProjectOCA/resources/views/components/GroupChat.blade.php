@@ -21,8 +21,6 @@
     <div class="messages" id="message-block">
         @if(!empty($messageContent))
             {{ $messageContent }}
-        @else
-            <p>No messages were sent currently...</p>
         @endif
     </div>
 

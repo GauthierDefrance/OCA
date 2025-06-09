@@ -6,12 +6,16 @@
 @section("meta_author","I am the author.")
 
 @push("styles")
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    @vite(["resources/css/main.css",])
 @endpush
 
 @push("scripts")
-    <script src="{{ asset('js/Channels.js') }}" defer></script>
-    <script src="{{ asset('js/MessageSender.js') }}" defer></script>
+    @vite(["resources/js/echo.js",
+            "resources/js/channels/MenuMover.js",
+            "resources/js/channels/ChatLoader.js",
+            "resources/js/channels/MessageSender.js",
+            "resources/js/channels/InvitationScripts.js",
+])
 @endpush
 <!-- End Head -->
 
@@ -57,7 +61,7 @@
 
             <nav class="menu-links" id="channels">
                 @foreach($groups as $group)
-                    <button value="{{ url('api/channels', ['id' => $group->id]) }}">{{ $group->title ?? 'Groupe sans titre' }}</button>
+                    <button data-group-id="{{$group->id}}" class="group-selector-button" value="{{ url('api/channels', ['id' => $group->id]) }}">{{ $group->title ?? 'Groupe sans titre' }}</button>
                 @endforeach
 
                 @if($groups->isEmpty())

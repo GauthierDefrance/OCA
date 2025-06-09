@@ -6,12 +6,11 @@
 @section("meta_author","I am the author.")
 
 @push("styles")
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/LoginForm.css') }}">
+    @vite(["resources/css/main.css",])
 @endpush
 
 @push("scripts")
-    <script src="{{ asset('js/LoginButton.js') }}" defer></script>
+    @vite(["resources/js/connect/LoginButton.js",])
 @endpush
 <!-- End Head -->
 

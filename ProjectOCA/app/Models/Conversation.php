@@ -31,5 +31,11 @@ class Conversation extends Model
         return $this->hasMany(Message::class);
     }
 
+    public function scopeAccessibleTo($query, $userId)
+    {
+        return $query->whereHas('users', function ($q) use ($userId) {
+            $q->where('users.id', $userId);
+        });
+    }
 
 }

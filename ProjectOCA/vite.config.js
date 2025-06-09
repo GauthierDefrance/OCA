@@ -5,7 +5,16 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: ['resources/css/main.css',
+                'resources/js/app.js',
+                'resources/js/echo.js',
+                'resources/js/connect/LoginButton.js',
+                'resources/js/channels/MenuMover.js',
+                'resources/js/channels/ChatLoader.js',
+                'resources/js/channels/MessageSender.js',
+                'resources/js/channels/InvitationScripts.js',
+                'resources/js/channels/ChannelRefresher.js',
+            ],
             refresh: true,
         }),
         tailwindcss(),

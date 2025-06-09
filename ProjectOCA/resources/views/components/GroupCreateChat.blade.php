@@ -4,15 +4,13 @@
     @csrf
     <h3>Create a New Group</h3>
 
-    <label for="title">Group Title <span style="color:red;">*</span></label><br/>
+    <label for="title">Group Title <span style="color:red;">*</span></label>
     <input type="text" id="title" name="title" required maxlength="64" placeholder="Enter group title" />
 
-    <br/><br/>
 
-    <label for="description">Description</label><br/>
+    <label for="description">Description</label>
     <textarea id="description" name="description" rows="4" maxlength="255" placeholder="Describe your group (optional)"></textarea>
 
-    <br/><br/>
     <input type="hidden" name="redirect_after" value="1" />
     <button type="submit">Create Group</button>
 </form>

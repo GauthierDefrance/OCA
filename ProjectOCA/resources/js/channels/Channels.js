@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Sélecteurs généraux ---
     const form = document.querySelector('.message-sender');
     const MessageBlock = document.getElementById('message-block');
-    const refreshBtn = document.getElementById('refresh');
     const GroupTitle = document.getElementById('group-name');
     const groupButtons = document.querySelectorAll('#channels button');
 
@@ -25,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const leaveLink = document.getElementById('leave-group');
 
     let currentChannelId = null;
-    let lastMessageTimestamp = null;
+    let lastMessageTimestamp = '1970-01-01T00:00:00Z';
+    let loop=false;
 
     // --- Fonctions utilitaires ---
     function toggleMenus(hideElements, showElement) {
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function loadMessages(channelId = null) {
+        loop=false;
         currentChannelId = channelId || extractChannelIdFromFormAction();
 
         if (!currentChannelId) {
@@ -56,16 +57,17 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.messages?.length > 0) {
                 lastMessageTimestamp = data.messages[data.messages.length - 1].created_at;
             } else {
-                lastMessageTimestamp = null;
+                lastMessageTimestamp = '1970-01-01T00:00:00Z';
             }
         } catch (error) {
             console.error(error);
             MessageBlock.innerHTML = '<p>Impossible de charger les messages.</p>';
         }
+        loop=true;
     }
 
     async function loadNewMessages() {
-        if (!currentChannelId || !lastMessageTimestamp) return;
+        if (!currentChannelId || !lastMessageTimestamp || !loop) return;
 
         try {
             const response = await fetch(`/api/channels/${currentChannelId}/get-new-messages?since=${encodeURIComponent(lastMessageTimestamp)}`, {
@@ -105,15 +107,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const loggedUserName = document.getElementById('chat').dataset.userName;
         const isCurrentUser = msg.sender?.name === loggedUserName;
-
         const name = msg.sender?.name || 'Unknow';
         const content = msg.content || '[Deleted]';
         const time = msg.created_at ? formatTimestamp(msg.created_at) : '';
 
+        // Cas spécial pour les messages système
+        if (msg.type === 'system') {
+            div.classList.add('message-middle');
+            div.innerHTML = `
+            <span class="system-message">${content}</span>
+            <div class="timestamp">${time}</div>
+        `;
+            return div;
+        }
+
+        // Sinon message utilisateur (gauche ou droite)
         if (isCurrentUser) {
-            div.classList.add('message-right'); // classe CSS pour aligner à droite
+            div.classList.add('message-right');
         } else {
-            div.classList.add('message-left'); // classe CSS pour aligner à gauche
+            div.classList.add('message-left');
         }
 
         div.innerHTML = `
@@ -135,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderMessages(messages) {
         MessageBlock.innerHTML = '';
         if (messages.length === 0) {
-            MessageBlock.innerHTML = '<p>Aucun message pour ce groupe.</p>';
+            MessageBlock.innerHTML = '<p class="message-middle">Start of the conversation.</p>';
             return;
         }
         messages.forEach(msg => {
@@ -203,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const response = await fetch(`/api/channels/${groupId}/accept-invite`, {
                     method: 'POST',
                     headers: {
+                        'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
                     },

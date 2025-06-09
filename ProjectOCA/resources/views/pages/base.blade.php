@@ -6,7 +6,7 @@
 @section("meta_author","I am the author.")
 
 @push("styles")
-
+    @vite(["resources/css/main.css",])
 @endpush
 
 @push("scripts")
