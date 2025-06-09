@@ -41,6 +41,10 @@ Route::prefix('api')->middleware('auth')->group(function () {
         Route::get('/block-list', 'getBlockList');
         Route::get('/invite-list', 'getInviteList');
         Route::post('/create-group', 'createGroup')->name("api.create_group");
+
+        Route::post('/block', 'blockUser');
+        Route::post('/unblock', 'unblockUser');
+        Route::post('/kick-user', 'kickUser');
     });
 
     Route::prefix('/channels/{id}')->controller(\App\Http\Controllers\ApiChannelController::class)->group(function () {

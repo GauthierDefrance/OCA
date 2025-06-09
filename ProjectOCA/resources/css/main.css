@@ -476,7 +476,6 @@ a.white:hover img {
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
-    background-color: #e0e0e0;
     padding: 8px 12px;
     border-radius: 4px;
     font-size: 14px;
@@ -780,7 +779,7 @@ a.white:hover img {
    ===================================================== */
 .chat-actions {
     margin-bottom: 1rem;
-    background: white;
+    background-color: #e1e1e1;
 }
 
 
@@ -862,8 +861,12 @@ a.white:hover img {
     border-radius: 10px;
     background-color: #fff;
     font-family: Arial, sans-serif;
-    min-height: 150px;
+    height: 200px; /* 👈 fixe ou max-height */
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
 }
+
 
 /* Style pour chaque élément de la liste (si vous voulez les styler) */
 #banned-list .banned-item {
@@ -877,4 +880,34 @@ a.white:hover img {
 }
 
 
+.blocked-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.blocked-user p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.blocked-user button {
+    padding: 8px 12px;
+    background-color: #dc3545; /* rouge pour indiquer l'action de débloquer */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.blocked-user button:hover {
+    background-color: #c82333;
+}
 

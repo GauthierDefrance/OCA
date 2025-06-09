@@ -9,7 +9,7 @@ use App\Models\Conversation;
 use App\Models\Invitation;
 use App\Models\Message;
 use Carbon\Carbon;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -183,6 +183,9 @@ class ApiChannelController extends Controller
 
         $recipient = User::where('email', $request->input('recipient_email'))->first();
 
+        if ($recipient->hasBlocked(auth()->user())) {
+            return redirect()->back()->withErrors(['recipient_email' => 'Vous ne pouvez pas inviter cet utilisateur.']);
+        }
 
         if (!$recipient) {
             return redirect()->back()->withErrors(['recipient_email' => 'Utilisateur introuvable.']);

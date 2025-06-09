@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Block;
 use App\Models\Conversation;
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,6 +83,93 @@ class ApiMainController extends Controller
     }
 
 
+
+    public function blockUser(Request $request)
+    {
+        $validated = $request->validate([
+            'email_to_block' => 'required|string|email|max:255',
+        ]);
+
+        $email = $validated['email_to_block'];
+
+        $userToBlock = User::where('email', $email)->first();
+
+        if (!$userToBlock) {
+            return response()->json(['message' => 'Utilisateur introuvable.'], 404);
+        }
+
+        $currentUser = auth()->user();
+
+        // Vérifie si l'utilisateur essaie de se bloquer lui-même
+        if ($currentUser->id === $userToBlock->id) {
+            return response()->json(['message' => 'Vous ne pouvez pas vous bloquer vous-même.'], 400);
+        }
+
+        // Vérifie si le blocage existe déjà
+        $alreadyBlocked = Block::where('blocker_id', $currentUser->id)
+            ->where('blocked_id', $userToBlock->id)
+            ->exists();
+
+        if ($alreadyBlocked) {
+            return response()->json(['message' => 'Utilisateur déjà bloqué.'], 409);
+        }
+
+        // Crée le blocage
+        Block::create([
+            'blocker_id' => $currentUser->id,
+            'blocked_id' => $userToBlock->id,
+        ]);
+
+        return response()->json([
+            'message' => 'Utilisateur bloqué avec succès.',
+            'user' => [
+                'id' => $userToBlock->id,
+                'name' => $userToBlock->name,
+                'email' => $userToBlock->email,
+            ]
+        ]);
+    }
+
+
+    public function unblockUser(Request $request)
+    {
+
+        $validated = $request->validate([
+            'user_id' => 'required|string|exists:users,id',
+        ]);
+
+        $id = $validated['user_id'];
+
+        $blocker = auth()->user(); // Utilisateur connecté
+
+        if ($blocker->id == $id) {
+            return response()->json(['message' => 'Action non autorisée.'], 400);
+        }
+
+        $blocked = User::find($id);
+
+        if (!$blocked) {
+            return response()->json(['message' => 'Utilisateur introuvable.'], 404);
+        }
+
+        // Vérifie s'il y a bien un blocage existant
+        $block = Block::where('blocker_id', $blocker->id)
+            ->where('blocked_id', $blocked->id)
+            ->first();
+
+        if (!$block) {
+            return response()->json(['message' => 'Cet utilisateur n’est pas bloqué.'], 404);
+        }
+
+        $block->delete();
+
+        return response()->json(['message' => 'Utilisateur débloqué avec succès.']);
+    }
+
+
+    public function kickUser(Request $request) {
+
+    }
 
 
 }

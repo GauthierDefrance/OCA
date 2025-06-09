@@ -15,6 +15,8 @@
             "resources/js/channels/ChatLoader.js",
             "resources/js/channels/MessageSender.js",
             "resources/js/channels/InvitationScripts.js",
+            "resources/js/channels/BlockScript.js",
+
 ])
 @endpush
 <!-- End Head -->

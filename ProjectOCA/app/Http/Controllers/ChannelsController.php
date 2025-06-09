@@ -18,7 +18,9 @@ class ChannelsController extends Controller
         // Invitations reçues par l'utilisateur (non acceptées, si tu as un status, sinon toutes)
         $invitations = \App\Models\Invitation::where('recipient_id', $user->id)->get();
 
-        return view('pages.channels.index', compact('groups', 'invitations'));
+        $blockedUsers = $user->blockedUsers()->get();
+
+        return view('pages.channels.index', compact('groups', 'invitations', 'blockedUsers'));
     }
     public function showQuitChannel($id) {
         $conversation = Conversation::findOrFail($id); // Récupère la conversation ou échoue si non trouvée
@@ -27,10 +29,25 @@ class ChannelsController extends Controller
             'name' => $conversation->title, // Passe le nom du groupe à la vue
         ]);
     }
-    public function showGroupMember($id){
-        return view('pages.channels.members');
-    }
 
+    public function showGroupMember($id)
+    {
+        $conversation = Conversation::with('users')->findOrFail($id);
+        $members = $conversation->users;
+        $conversationName = $conversation->name;
+        $conversationId = $conversation->id;
+        $conversationDescription = $conversation->description;
+
+        // Vérifie si l'utilisateur connecté est modérateur du groupe
+        $currentUser = auth()->user();
+        $isModerator = $conversation->users()
+            ->where('user_id', $currentUser->id)
+            ->first()
+            ?->pivot
+            ?->isModerator ?? false;
+
+        return view('pages.channels.members', compact('members', 'conversationName', 'conversationId', 'conversationDescription', 'isModerator'));
+    }
 
     public function showAddMember($id)
     {

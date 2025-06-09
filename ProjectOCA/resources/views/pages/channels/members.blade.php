@@ -10,7 +10,6 @@
 @endpush
 
 @push("scripts")
-    <!--- <script src="/js/app.js" defer></script> le defer est important ! --->
 
 @endpush
 <!-- End Head -->
@@ -27,9 +26,24 @@
 
 <!-- Main -->
 @section("main")
-    <h1>Admin</h1>
+    <h1>Members group list</h1>
     <section>
-        <h2>Admin control</h2>
+        <h2>Membres du groupe : {{ $conversationName }}</h2>
+        <p>{{$conversationDescription}}</p>
+        <ul>
+            @foreach ($members as $member)
+                <li>
+                    {{ $member->name }} ({{ $member->email }})
+                    @if ($member->pivot->isModerator)
+                        <strong> - Modérateur</strong>
+                    @endif
+
+                    @if ($isModerator && $member->id !==auth()->id())
+                    <button data-set-conversation-id="{{ $conversationId }}" data-set-id="{{$member->id}}">Kick</button>
+                    @endif
+                </li>
+            @endforeach
+        </ul>
     </section>
 @endsection
 <!-- End Main -->

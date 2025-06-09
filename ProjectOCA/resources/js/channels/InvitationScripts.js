@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Création et insertion d'un nouveau bloc d'invitation reçu en temps réel
                         // =====================================================
                         const inviteElement = document.createElement('div');
-                        inviteElement.classList.add('groupe-invite');
+                        inviteElement.classList.add('group-invite');
                         inviteElement.innerHTML = `
                             <span class="group-name">${inviteData.group_title || 'Untitled Group'}</span>
                             <p>from <span class="group-name">${inviteData.inviter.name || 'Unknown'}</span></p>

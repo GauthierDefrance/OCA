@@ -13,7 +13,7 @@ export default defineConfig({
                 'resources/js/channels/ChatLoader.js',
                 'resources/js/channels/MessageSender.js',
                 'resources/js/channels/InvitationScripts.js',
-                'resources/js/channels/ChannelRefresher.js',
+                'resources/js/channels/BlockScript.js',
             ],
             refresh: true,
         }),

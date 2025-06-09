@@ -80,4 +80,37 @@ class User extends Authenticatable
         return $this->hasMany(EmailVerification::class);
     }
 
+    // Les utilisateurs que je bloque
+    public function blockedUsers()
+    {
+        return $this->belongsToMany(User::class, 'blocks', 'blocker_id', 'blocked_id');
+    }
+
+// Les utilisateurs qui m'ont bloqué
+    public function blockedByUsers()
+    {
+        return $this->hasMany(Block::class, 'blocked_id');
+    }
+
+// Vérifier si un utilisateur est bloqué
+    public function hasBlocked(User $user)
+    {
+        return $this->blockedUsers()->where('blocked_id', $user->id)->exists();
+    }
+
+// Vérifier si je suis bloqué par un autre utilisateur
+    public function isBlockedBy(User $user)
+    {
+        return $this->blockedByUsers()->where('blocker_id', $user->id)->exists();
+    }
+
+    public function usersWhoBlockedMe()
+    {
+        return $this->belongsToMany(User::class, 'blocks', 'blocked_id', 'blocker_id');
+    }
+
+
+
+
+
 }
