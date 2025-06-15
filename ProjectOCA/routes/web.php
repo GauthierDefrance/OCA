@@ -1,22 +1,37 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 
 /**
  * Menu principal
  */
-Route::prefix('/')->controller(\App\Http\Controllers\HomeController::class)->group(function () {
+Route::controller(\App\Http\Controllers\HomeController::class)->middleware("setLang")->group(function () {
     Route::get('/', 'index');
     Route::get('/home', 'index')->name('home');
-
 });
+
+
+
+Route::get('locale/{locale}', function ($locale) {
+
+    // Check if the passed locale is available in our configuration
+    if (in_array($locale, array_values(config('app.available_locales')))) {
+
+        // If valid, store the locale in the session
+        Session::put('locale', $locale);
+    }
+    // Redirect back to the previous page
+    return redirect()->back();
+});
+
 
 
 /**
  * Menu de Connection
  */
-Route::prefix('/connect')->controller(\App\Http\Controllers\ConnectController::class)->group(function () {
+Route::prefix('/connect')->controller(\App\Http\Controllers\ConnectController::class)->middleware("setLang")->group(function () {
     Route::get('/', 'index')->name('connect');
     Route::post('/login', 'login');
     Route::post('/register', 'register');
@@ -34,7 +49,7 @@ Route::prefix('/connect')->controller(\App\Http\Controllers\ConnectController::c
 /**
  * API de discussion
  */
-Route::prefix('api')->middleware('auth')->group(function () {
+Route::prefix('api')->middleware('auth')->middleware("setLang")->group(function () {
 
     Route::controller(\App\Http\Controllers\ApiMainController::class)->group(function () {
         Route::get('/group-list', 'getGroupList');
@@ -75,7 +90,7 @@ Route::prefix('api')->middleware('auth')->group(function () {
 /**
  * Menu de discussions
  */
-Route::prefix('/channels')->middleware('auth.basic')->controller(\App\Http\Controllers\ChannelsController::class)->group(function () {
+Route::prefix('/channels')->middleware('auth.basic')->middleware("setLang")->controller(\App\Http\Controllers\ChannelsController::class)->group(function () {
     Route::get('/', 'index')->name('channels.index');
 
     Route::prefix('/{id}')->name("channels.id")->middleware("auth.channel")->group(function () {
@@ -90,7 +105,7 @@ Route::prefix('/channels')->middleware('auth.basic')->controller(\App\Http\Contr
 /**
  * Menu d'options du compte
  */
-Route::prefix('/account')->controller(App\Http\Controllers\AccountController::class)->group(function () {
+Route::prefix('/account')->middleware("setLang")->controller(App\Http\Controllers\AccountController::class)->group(function () {
     Route::get('/', 'index');
 });
 
@@ -98,7 +113,7 @@ Route::prefix('/account')->controller(App\Http\Controllers\AccountController::cl
 /**
  * Menu d'administration
  */
-Route::prefix('/admin')->middleware("auth.admin")->controller(\App\Http\Controllers\AdminController::class)->group(function () {
+Route::prefix('/admin')->middleware("auth.admin")->middleware("setLang")->controller(\App\Http\Controllers\AdminController::class)->group(function () {
     Route::get('/', 'index');
 });
 
@@ -106,7 +121,7 @@ Route::prefix('/admin')->middleware("auth.admin")->controller(\App\Http\Controll
 /**
  * Menu à propos
  */
-Route::prefix('/about')->controller(\App\Http\Controllers\AboutController::class)->group(function () {
+Route::prefix('/about')->middleware("setLang")->controller(\App\Http\Controllers\AboutController::class)->group(function () {
     Route::get('/', 'index');
 });
 
@@ -114,6 +129,6 @@ Route::prefix('/about')->controller(\App\Http\Controllers\AboutController::class
 /**
  * Menu de contacts
  */
-Route::prefix('/contact')->controller(\App\Http\Controllers\ContactController::class)->group(function () {
+Route::prefix('/contact')->middleware("setLang")->controller(\App\Http\Controllers\ContactController::class)->group(function () {
     Route::get('/', 'index');
 });

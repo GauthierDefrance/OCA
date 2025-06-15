@@ -165,7 +165,7 @@ main section {
 .form-box h2 {
     text-align: center;
     font-size: 24px;
-    color: white;
+    color: black;
     margin-bottom: 20px;
 }
 
@@ -175,7 +175,7 @@ main section {
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 
 /* Inputs, Selects, Textareas */
@@ -365,7 +365,7 @@ a.white:hover img {
     left: 0;
     background-color: #1e293b;
     border-radius: 4px;
-    min-width: 140px;
+    min-width: 160px;
     padding: 10px 0;
     list-style: none;
     z-index: 1000;
@@ -910,4 +910,8 @@ a.white:hover img {
 .blocked-user button:hover {
     background-color: #c82333;
 }
+
+
+
+
 

@@ -234,24 +234,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     const existingBtn = groupMenu.querySelector(`button[data-group-id="${groupId}"]`);
 
                     if (action === 'added' && !existingBtn) {
-                        // Si aucun bouton n'est présent, recherche et supprime le placeholder
-                        if (groupMenu.querySelectorAll('button').length === 0) {
-                            const placeholder = groupMenu.querySelector('p');
-                            if (placeholder && placeholder.textContent.includes('Aucun groupe trouvé')) {
-                                placeholder.remove();
-                            }
-                        }
-
-                        // Création du nouveau bouton pour le groupe
+                        // Cas d'ajout : le groupe n'existe pas encore, donc on le crée
                         const btn = document.createElement('button');
                         btn.classList.add('group-selector-button');
                         btn.setAttribute('data-group-id', groupId);
                         btn.setAttribute('value', `/api/channels/${groupId}`);
                         btn.textContent = title;
 
-                        // Ajout de l'écouteur du clic
+                        // Ajout d'un écouteur sur le nouveau bouton pour gérer sa sélection
                         btn.addEventListener('click', () => {
-                            if (!btn.isConnected) return;
+                            if (!btn.isConnected) return; // évite bugs sur vieux boutons
                             currentChannelId = btn.dataset.groupId;
                             changeForm(btn);
                             subscribeToChannel(currentChannelId);
@@ -261,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         groupMenu.appendChild(btn);
                         console.log(`Groupe "${title}" ajouté.`);
-                } else if (action === 'removed' && existingBtn) {
+                    } else if (action === 'removed' && existingBtn) {
                         existingBtn.remove();
                         console.log(`Groupe ID ${groupId} supprimé.`);
 

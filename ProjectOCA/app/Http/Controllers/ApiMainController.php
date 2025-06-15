@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\GroupAccessUpdated;
+use App\Events\MessageSent;
 use App\Models\Block;
 use App\Models\Conversation;
+use App\Models\Message;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -167,8 +170,42 @@ class ApiMainController extends Controller
     }
 
 
-    public function kickUser(Request $request) {
+    public function kickUser(Request $request)
+    {
+        $request->validate([
+            'conversation_id' => 'required|integer|exists:conversations,id',
+            'user_id' => 'required|integer|exists:users,id',
+        ]);
 
+        $conversation = Conversation::findOrFail($request->conversation_id);
+        $userToKick = User::findOrFail($request->user_id);
+
+        // Vérifie si l'utilisateur fait bien partie de la conversation
+        if (!$conversation->users->contains($userToKick->id)) {
+            return response()->json(['message' => 'Utilisateur non membre du groupe.'], 400);
+        }
+
+        // Supprime le lien entre l'utilisateur et la conversation
+        $conversation->users()->detach($userToKick->id);
+
+        // Message système
+        $kickerName = auth()->user()->name;
+        $kickedName = $userToKick->name;
+
+        $systemMessage = "{$kickerName} a exclu {$kickedName} du groupe le " . Carbon::now()->format('d/m/Y H:i');
+
+        $message = Message::create([
+            'conversation_id' => $conversation->id,
+            'sender_id' => null, // message système
+            'body' => $systemMessage,
+            'type' => 'system',
+        ]);
+
+        // Diffusion de l’événement via websocket
+        broadcast(new MessageSent($message, $conversation->id));
+        broadcast(new GroupAccessUpdated('removed', $conversation, $userToKick->id));
+
+        return response()->json(['message' => 'Utilisateur exclu avec succès.']);
     }
 
 

@@ -1,0 +1,82 @@
+.group-members {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.group-members__title {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2rem;
+    color: #333;
+}
+
+.group-members__heading {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.group-members__desc {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.group-members__error {
+    margin: 1rem 0;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    color: red;
+}
+
+.group-members__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.group-members__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Bouton Kick */
+.kick-btn {
+    padding: 0.4rem 0.8rem;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.kick-btn:disabled,.kick-btn:disabled:hover{
+    background-color: grey;
+    cursor: default;
+}
+
+.kick-btn:hover {
+    background-color: #e60000;
+}
+
+/* Badge modérateur */
+.group-members__badge {
+    color: #007acc;
+    font-weight: bold;
+}

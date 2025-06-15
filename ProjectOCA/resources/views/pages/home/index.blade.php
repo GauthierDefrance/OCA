@@ -1,8 +1,8 @@
 @extends("layouts.base")
 
 <!-- Head -->
-@section("title","Home")
-@section("meta_desc","This is the description.")
+@section("title", __("pages.home.page_name"))
+@section("meta_desc", __("pages.home.page_description"))
 @section("meta_author","I am the author.")
 
 @push("styles")
@@ -27,25 +27,26 @@
 
 <!-- Main -->
 @section("main")
-    <h1>Home page</h1>
-
+    <h1>
+        @lang("pages.home.title")
+    </h1>
     @guest()
     <section>
-        <h2>Welcome on OCA</h2>
-        <p>In order to begin your adventure you should sign in !</p>
+        <h2>@lang("pages.home.guest_title")</h2>
+        <p>@lang("pages.home.guest_text")</p>
     </section>
     @endguest
 
     @auth()
     <section>
-        <h2>Welcome back {{ Auth::user()->name }} !</h2>
-        <p>Content of the section</p>
+        <h2>@lang("pages.home.client_title") {{ Auth::user()->name }} !</h2>
+        <p>@lang("pages.home.client_text")</p>
     </section>
     @endauth
 
     <section>
-        <h2>New articles</h2>
-        <p>Content of the section</p>
+        <h2>@lang("pages.home.new_articles_title")</h2>
+        <p>@lang("pages.home.articles_description")</p>
 
         <div class="card-container">
             <a href="URL" class="card">

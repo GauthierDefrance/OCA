@@ -1,6 +1,12 @@
 <?php
 return [
 
+    "head" => [
+
+
+
+    ],
+
     "header" => [
         "Home" => "Home",
         "Channels" => "Channels",

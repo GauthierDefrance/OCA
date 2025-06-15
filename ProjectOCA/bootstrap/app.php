@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth.admin' => \App\Http\Middleware\IsAdmin::class,
             'auth.basic' => \App\Http\Middleware\Auth::class,
             'auth.channel' => \App\Http\Middleware\HasAccess::class,
+            'setLang' => \App\Http\Middleware\SetLocale::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

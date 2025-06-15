@@ -86,5 +86,5 @@
     </div>
 
 
-
+    <p class="left">©OCA 2025 </p>
 </footer>
