@@ -1,8 +1,8 @@
 @extends("layouts.base")
 
 <!-- Head -->
-@section("title","Home")
-@section("meta_desc","This is the description.")
+@section("title", __("pages.quit.page_name"))
+@section("meta_desc", __("pages.quit.page_description"))
 @section("meta_author","I am the author.")
 
 @push("styles")
@@ -27,15 +27,15 @@
 
 <!-- Main -->
 @section("main")
-    <h1>Leave the group?</h1>
+    <h1>@lang("pages.quit.title")</h1>
 
     <section>
-        <h2>Confirm</h2>
+        <h2>@lang("pages.quit.confirm")</h2>
 
         <form method="POST" action="/api/channels/{{$id}}/quit-confirm-channel">
             @csrf
-            <p>Are you sure you want to leave the group <strong>{{$name}}</strong> ?</p>
-            <button type="submit" class="btn btn-danger">Yes, leave</button>
+            <p>@lang("pages.quit.sure") <strong>{{$name}}</strong> ?</p>
+            <button type="submit" class="btn btn-danger">@lang("pages.quit.proceed")</button>
         </form>
     </section>
 @endsection

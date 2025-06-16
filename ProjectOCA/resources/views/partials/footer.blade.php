@@ -34,44 +34,17 @@
     <hr/>
     <nav class="navbar">
         <ul class="nav-links">
-            <li><a href="/">
+            <li><a href="/map">
                     <img src="/icons/map.svg" alt="Map" width="24" height="24" class="icon"/>
                     @lang("partial.footer.webmap")
                 </a></li>
 
-            <li><a href="/">
+            <li><a href="/tech">
                     <img src="/icons/wrench.svg" alt="WrenchAndScrews" width="24" height="24" class="icon"/>
                     @lang("partial.footer.techpage")
                 </a></li>
         </ul>
     </nav>
-    <hr/>
-    <div class="group">
-        <section class="colonne">
-            <h2 class="left">titre 1</h2>
-            <nav class="nav-verticale">
-                <a href="#">Lien 1</a>
-                <a href="#">Lien 2</a>
-                <a href="#">Lien 3</a>
-            </nav>
-        </section>
-        <section class="colonne">
-            <h2 class="left">titre 2</h2>
-            <nav class="nav-verticale">
-                <a href="#">Lien 1</a>
-                <a href="#">Lien 2</a>
-                <a href="#">Lien 3</a>
-            </nav>
-        </section>
-        <section class="colonne">
-            <h2 class="left">titre 3</h2>
-            <nav class="nav-verticale">
-                <a href="#">Lien 1</a>
-                <a href="#">Lien 2</a>
-                <a href="#">Lien 3</a>
-            </nav>
-        </section>
-    </div>
 
     <hr/>
 

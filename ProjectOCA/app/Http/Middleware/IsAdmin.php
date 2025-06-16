@@ -15,7 +15,7 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
-            abort(403);
+            abort(403); // Non autorisé
         }
 
         return $next($request);

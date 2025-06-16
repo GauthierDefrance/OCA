@@ -1,8 +1,8 @@
 @extends("layouts.base")
 
 <!-- Head -->
-@section("title","Home")
-@section("meta_desc","This is the description.")
+@section("title", __("pages.members.page_name"))
+@section("meta_desc", __("pages.members.page_description"))
 @section("meta_author","I am the author.")
 
 @push("styles")
@@ -26,9 +26,9 @@
 
 <!-- Main -->
 @section("main")
-    <h1 class="group-members__title">Members group list</h1>
+    <h1 class="group-members__title">@lang("pages.members.title")</h1>
     <section class="group-members">
-        <h2 class="group-members__heading">Membres du groupe : {{ $conversationName }}</h2>
+        <h2 class="group-members__heading">@lang("pages.members.members_of_group") : {{ $conversationName }}</h2>
         <p class="group-members__desc">{{ $conversationDescription }}</p>
         <p id="error" class="group-members__error"></p>
         <ul class="group-members__list">
@@ -37,12 +37,12 @@
                     <span>{{ $member->name }} ({{ $member->email }})</span>
                     <span>
                     @if ($member->pivot->isModerator)
-                            <strong class="group-members__badge"> - Modérateur</strong>
+                            <strong class="group-members__badge"> - @lang("pages.members.moderator")</strong>
                         @endif
                         @if ($isModerator && !$member->pivot->isModerator && $member->id !== auth()->id())
-                            <button class="kick-btn" data-user-id="{{ $member->id }}">Kick</button>
+                            <button class="kick-btn" data-user-id="{{ $member->id }}">@lang("pages.members.kick")</button>
                         @else
-                            <button class="kick-btn" disabled>Kick</button>
+                            <button class="kick-btn" disabled>@lang("pages.members.kick")</button>
                         @endif
                 </span>
                 </li>

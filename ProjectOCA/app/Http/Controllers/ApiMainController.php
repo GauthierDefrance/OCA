@@ -179,29 +179,51 @@ class ApiMainController extends Controller
 
         $conversation = Conversation::findOrFail($request->conversation_id);
         $userToKick = User::findOrFail($request->user_id);
+        $authUser = auth()->user();
 
-        // Vérifie si l'utilisateur fait bien partie de la conversation
+        // On ne peut pas se kick soi-même
+        if ($authUser->id === $userToKick->id) {
+            return response()->json(['message' => 'Vous ne pouvez pas vous exclure vous-même.'], 400);
+        }
+
+        // Vérifie si l'utilisateur à kicker est dans la conversation
         if (!$conversation->users->contains($userToKick->id)) {
             return response()->json(['message' => 'Utilisateur non membre du groupe.'], 400);
         }
 
-        // Supprime le lien entre l'utilisateur et la conversation
+        // Vérifie si l'utilisateur authentifié est modérateur
+        $authIsModerator = $conversation->users()
+            ->where('user_id', $authUser->id)
+            ->wherePivot('isModerator', true)
+            ->exists();
+
+        if (!$authIsModerator) {
+            return response()->json(['message' => 'Vous devez être modérateur pour exclure un membre.'], 403);
+        }
+
+        // Vérifie si la personne à exclure est elle-même modératrice
+        $targetIsModerator = $conversation->users()
+            ->where('user_id', $userToKick->id)
+            ->wherePivot('isModerator', true)
+            ->exists();
+
+        if ($targetIsModerator) {
+            return response()->json(['message' => 'Impossible d’exclure un autre modérateur.'], 403);
+        }
+
+        // Tout est bon, on peut exclure
         $conversation->users()->detach($userToKick->id);
 
         // Message système
-        $kickerName = auth()->user()->name;
-        $kickedName = $userToKick->name;
-
-        $systemMessage = "{$kickerName} a exclu {$kickedName} du groupe le " . Carbon::now()->format('d/m/Y H:i');
+        $systemMessage = "{$authUser->name} a exclu {$userToKick->name} du groupe le " . now()->format('d/m/Y H:i');
 
         $message = Message::create([
             'conversation_id' => $conversation->id,
-            'sender_id' => null, // message système
+            'sender_id' => null,
             'body' => $systemMessage,
             'type' => 'system',
         ]);
 
-        // Diffusion de l’événement via websocket
         broadcast(new MessageSent($message, $conversation->id));
         broadcast(new GroupAccessUpdated('removed', $conversation, $userToKick->id));
 

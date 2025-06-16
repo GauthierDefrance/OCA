@@ -49,22 +49,12 @@
         <p>@lang("pages.home.articles_description")</p>
 
         <div class="card-container">
-            <a href="URL" class="card">
-                <h3>Carte 1</h3>
-                <p>Description de la carte 1.</p>
-            </a>
-            <a href="URL" class="card">
-                <h3>Carte 2</h3>
-                <p>Description de la carte 2.</p>
-            </a>
-            <a href="URL" class="card">
-                <h3>Carte 3</h3>
-                <p>Description de la carte 3.</p>
-            </a>
-            <a href="URL" class="card">
-                <h3>Carte 4</h3>
-                <p>Description de la carte 4. </p>
-            </a>
+            @foreach($articles as $article)
+                <a href="{{ route('articles.show', ['article' => $article->id]) }}" class="card">
+                    <h3>{{ $article->title }}</h3>
+                    <p>{{ $article->summary }}</p>
+                </a>
+            @endforeach
         </div>
 
     </section>

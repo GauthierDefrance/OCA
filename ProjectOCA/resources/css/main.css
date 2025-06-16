@@ -911,7 +911,130 @@ a.white:hover img {
     background-color: #c82333;
 }
 
+.list-container {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
+.sitemap__list,
+.sitemap__sublist {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
 
+.sitemap__sublist {
+    margin-left: 20px;
+    margin-top: 10px;
+}
 
+.sitemap__item {
+    margin-bottom: 14px;
+}
 
+/* Appliquer uniquement le pointillé vertical aux sous-éléments */
+.sitemap__subitem {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.sitemap__subitem::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    border-left: 2px dotted #ccc;
+}
+
+/* Liens */
+.sitemap__link {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: 500;
+}
+
+.sitemap__link:hover,
+.sitemap__link:focus {
+    text-decoration: underline;
+}
+
+.account-section {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.account-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.3rem;
+}
+
+.account-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-section label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #555;
+}
+
+.account-section input[type="text"],
+.account-section input[type="password"] {
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+}
+
+.account-section input[type="text"]:focus,
+.account-section input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.account-section button {
+    padding: 0.7rem;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.account-section button:hover {
+    background-color: #0056b3;
+}
+
+.flex-account-box {
+    display: flex;
+    flex-wrap: wrap;         /* Permet d’aller à la ligne suivante si débordement */
+    gap: 2rem;               /* Espace entre les éléments */
+    justify-content: center; /* Centre les éléments horizontalement */
+    margin: 2rem auto;
+    max-width: 1200px;       /* Largeur max pour contenir les formulaires */
+}
+.flex-account-box > * {
+    flex: 1 1 320px;         /* Chaque enfant prend minimum 320px et peut grandir */
+    box-sizing: border-box;  /* Pour inclure padding/border dans la taille */
+    min-width: 280px;        /* Largeur minimum pour éviter d’être trop petit */
+}

@@ -1,8 +1,8 @@
 @extends("layouts.base")
 
 <!-- Head -->
-@section("title","Home")
-@section("meta_desc","This is the description.")
+@section("title", __("pages.channels.page_name"))
+@section("meta_desc", __("pages.channels.page_description"))
 @section("meta_author","I am the author.")
 
 @push("styles")
@@ -16,8 +16,7 @@
             "resources/js/channels/MessageSender.js",
             "resources/js/channels/InvitationScripts.js",
             "resources/js/channels/BlockScript.js",
-
-])
+           ])
 @endpush
 <!-- End Head -->
 
@@ -32,30 +31,30 @@
 
 <!-- Main -->
 @section("main")
-    <h1>Channels</h1>
+    <h1>@lang("pages.channels.title")</h1>
     <section class="chat-container">
         <section class="sidebar-menu">
-            <h2 class="menu-title">Discussions</h2>
+            <h2 class="menu-title">@lang("pages.channels.sidebar-menu-title")</h2>
             <hr/>
             <nav class="menu-links">
                 <button id="home-btn">
                     <img src="/icons/house-user.svg" alt="Home" width="24" height="24" class="icon"/>
-                    Home
+                    @lang("pages.channels.home-btn")
                 </button>
 
                 <button id="creategroup-btn">
                     <img src="/icons/address-book.svg" alt="Create a new chat" width="24" height="24" class="icon"/>
-                    Create a new chat
+                    @lang("pages.channels.creategroup-btn")
                 </button>
 
                 <button id="invite-btn">
                     <img src="/icons/envelope.svg" alt="Your invitations" width="24" height="24" class="icon"/>
-                    Your invitations
+                    @lang("pages.channels.invitation-btn")
                 </button>
 
                 <button id="block-btn">
                     <img src="/icons/ban-hammer.svg" alt="Block" width="24" height="24" class="icon"/>
-                    Block
+                    @lang("pages.channels.block-btn")
                 </button>
             </nav>
 
@@ -63,11 +62,11 @@
 
             <nav class="menu-links" id="channels">
                 @foreach($groups as $group)
-                    <button data-group-id="{{$group->id}}" class="group-selector-button" value="{{ url('api/channels', ['id' => $group->id]) }}">{{ $group->title ?? 'Groupe sans titre' }}</button>
+                    <button data-group-id="{{$group->id}}" class="group-selector-button" value="{{ url('api/channels', ['id' => $group->id]) }}">{{ $group->title ?? __("pages.channels.group_without_title") }}</button>
                 @endforeach
 
                 @if($groups->isEmpty())
-                    <p>Aucun groupe trouvé.</p>
+                    <p>@lang("pages.channels.no_group_found")</p>
                 @endif
             </nav>
         </section>

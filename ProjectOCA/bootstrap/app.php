@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth.basic' => \App\Http\Middleware\Auth::class,
             'auth.channel' => \App\Http\Middleware\HasAccess::class,
             'setLang' => \App\Http\Middleware\SetLocale::class,
+            'activityMeter' => \App\Http\Middleware\UpdateLastActivity::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

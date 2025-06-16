@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
@@ -10,7 +11,8 @@ use Illuminate\Support\Facades\Session;
 class HomeController extends Controller
 {
     public function index() {
-        return view('pages.home.index');
+        $articles = Article::orderBy('published_at', 'desc')->take(6)->get();
+        return view('pages.home.index', compact('articles'));
     }
 
     public function setLanguage(Request $request)

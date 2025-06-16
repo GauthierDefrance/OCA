@@ -16,6 +16,7 @@ export default defineConfig({
                 'resources/js/channels/InvitationScripts.js',
                 'resources/js/channels/BlockScript.js',
                 "resources/js/channels/KickUser.js",
+                "resources/js/stats/stats.css"
             ],
             refresh: true,
         }),

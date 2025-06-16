@@ -34,7 +34,7 @@ class ChannelsController extends Controller
     {
         $conversation = Conversation::with('users')->findOrFail($id);
         $members = $conversation->users;
-        $conversationName = $conversation->name;
+        $conversationName = $conversation->title;
         $conversationId = $conversation->id;
         $conversationDescription = $conversation->description;
 

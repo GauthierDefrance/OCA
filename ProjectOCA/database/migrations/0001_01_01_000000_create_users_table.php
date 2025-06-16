@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('email_verified')->default(false);
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_banned')->default(false);
+            $table->timestamp('last_activity')->nullable()->after('remember_token');
             $table->rememberToken();
             $table->timestamps();
         });
