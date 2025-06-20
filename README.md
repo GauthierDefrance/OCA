@@ -1,28 +1,28 @@
 # 🌐 Laravel 12 – Plateforme de Discussion en Temps Réel
 
-Bienvenue sur **[NomDuProjet]**, un site web moderne développé avec Laravel 12. Il s'agit d'une plateforme sociale de discussion sécurisée, multilingue, et orientée temps réel grâce à l'utilisation des Websockets. Ce projet met un point d'honneur sur l'expérience utilisateur, la sécurité et la performance.
+Bienvenue sur **OCA**, un site web développé avec Laravel 12. Il s'agit d'une plateforme sociale de discussion sécurisée, multilingue, et orientée temps réel grâce à l'utilisation des Websockets. Ce site web est un projet personnel étudiant dans le but d'apprendre de nouveaux outils.
 
 ---
 
 ## 🛡️ Authentification & Sécurité
 
-Notre système d'authentification est robuste et inclut :
+Notre système d'authentification inclut :
 
-- **Connexion avec validation par email (2FA)** : Après connexion avec login/mot de passe, un email est envoyé à l'utilisateur pour confirmer son identité.
+- **Connexion avec validation par email (2FA)** : Après inscription avec login/mot de passe, un email est envoyé à l'utilisateur pour confirmer son identité.
 - **Modification sécurisée** du mot de passe ou du pseudonyme depuis les paramètres du compte.
-- Gestion des sessions et protections CSRF/XSS intégrées grâce à Laravel.
+- Gestion des sessions et protections CSRF intégrées grâce à Laravel.
 
 ---
-
 ## 📡 Websockets & Communication en Temps Réel
 
-Grâce à **Laravel Echo** et **Pusher** (ou un serveur WebSocket comme Soketi), les échanges sur la plateforme sont **100% temps réel** :
+Grâce à **Laravel Echo** et **Laravel Reverb**, la plateforme bénéficie d’une communication en **temps réel** totalement intégrée à l’écosystème Laravel :
 
-- 💬 Les **messages** dans les groupes s'affichent instantanément dès qu'ils sont envoyés.
-- 🔄 Les **noms des groupes** et leur liste sont mis à jour automatiquement sans recharger la page.
-- 👀 Les **messages système** (entrées/sorties, expulsions, etc.) sont également envoyés et visibles en live.
+- 💬 Les **messages** dans les groupes sont envoyés et reçus **instantanément**, sans rechargement de page.
+- 🔄 Les **groupes** se mettent à jour dynamiquement dès qu’un changement survient (nouveau groupe, renommage, suppression…).
+- 👀 Les **messages système** (utilisateur ajouté, expulsé, quittant le groupe, etc.) sont automatiquement diffusés à tous les membres du groupe.
 
----
+Reverb agit ici comme le **serveur WebSocket natif de Laravel**, sans dépendances externes comme Pusher, permettant des performances élevées et un contrôle total sur la logique des événements.
+
 
 ## 👥 Groupes de Discussion
 
@@ -92,7 +92,7 @@ L’implémentation des traductions est basée sur les fichiers `lang/`, ce qui 
 ## 🚀 Stack Technique
 
 - **Framework** : Laravel 12
-- **Temps réel** : Laravel Echo + Pusher / Reverb
+- **Temps réel** : Laravel Echo + Reverb
 - **Base de données** : PostgreSQL
 - **Front-end** : Blade
 - **Multilingue** : Laravel Localization
