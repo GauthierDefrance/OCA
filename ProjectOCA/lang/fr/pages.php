@@ -1,1 +1,225 @@
 <?php
+
+return [
+
+    "home" => [
+        "page_name" => "Accueil",
+        "page_description" => "Ceci est la page d'accueil.",
+        "title" => "Page d'accueil",
+        "guest_title" => "Bienvenue sur OCA",
+        "guest_text" => "Pour commencer votre aventure, vous devez vous connecter !",
+        "client_title" => "Content de vous revoir",
+        "client_text" => "Contenu de la section",
+        "new_articles_title" => "Nouveaux articles",
+        "articles_description" => "Contenu de la section",
+    ],
+
+    "connect" => [
+        "page_name" => "Connexion",
+        "page_description" => "Ceci est la page de connexion.",
+        "title" => "Page de connexion",
+        "Login" => "Connexion",
+        "Username" => "Nom d'utilisateur",
+        "Password" => "Mot de passe",
+        "Confirm password" => "Confirmer le mot de passe",
+        "Email" => "Email",
+        "Register" => "S'inscrire",
+        "Confirm" => "Confirmer",
+        "LabelMail" => "Entrez votre adresse email",
+        "LabelPassword" => "Entrez votre mot de passe",
+        "LabelPasswordConfirm" => "Confirmez votre mot de passe",
+        "LabelUsername" => "Entrez votre nom d'utilisateur",
+        "PlaceholderEmail" => "exemple@mail.com",
+        "PlaceholderUsername" => "monpseudo",
+        "LoginError" => "Email ou mot de passe incorrect",
+        "your_email" => "Votre email",
+        "your_code" => "Votre code",
+        "input_email" => "Entrez votre email",
+        "email_sender_desc" => "Cette page permet d'envoyer un email de vérification à votre adresse.",
+        "email_checker_desc" => "Cette page permet de vérifier un email envoyé à votre adresse.",
+        "email_check_title" => "Vérifiez votre mail",
+        "ask_for_link" => "Donnez-moi un nouveau lien !",
+    ],
+
+    "contact" => [
+        "page_name" => "Contact",
+        "page_description" => "Ceci est la page de contact.",
+        "text" => "Voici les endroits où vous pouvez en apprendre plus sur mon travail",
+        "title" => "Page de contact",
+        "contacts_list" => "Liste des contacts",
+        "github" => "Mon Github",
+        "youtube" => "Ma chaîne",
+        "gmail" => "Pas d'email",
+    ],
+
+    "channels" => [
+        "page_name" => "Discussion",
+        "page_description" => "Ceci est la page des canaux.",
+        "title" => "Page des canaux",
+
+        "sidebar-menu-title" => "Canaux",
+        "home-btn" => "Accueil",
+        "creategroup-btn" => "Créer un nouveau chat",
+        "invitation-btn" => "Vos invitations",
+        "block-btn" => "Bloquer",
+
+        "no_group_found" => "Aucun groupe trouvé.",
+        "group_without_title" => "Groupe sans titre",
+    ],
+
+    "add" => [
+        "page_name" => "Discussion",
+        "page_description" => "Ceci est la page des canaux.",
+        "title" => "Invitations envoyées",
+        "send_new_invite" => "Envoyer une nouvelle invitation",
+        "email" => "Email de l'utilisateur à inviter",
+        "send" => "Envoyer l'invitation",
+        "invite_list" => "Liste des invitations envoyées",
+        "no_invite_found" => "Aucune invitation trouvée.",
+        "unknow" => "Email inconnu",
+    ],
+
+    "members" => [
+        "page_name" => "Membres du canal",
+        "page_description" => "Ceci est la page de la liste des membres.",
+        "title" => "Liste des membres du groupe",
+        "members_of_group" => "Membres du groupe",
+        "moderator" => "Modérateur",
+        "kick" => "Exclure",
+    ],
+
+    "quit" => [
+        "page_name" => "Quitter le canal",
+        "page_description" => "Ceci est la page des canaux.",
+        "title" => "Quitter le groupe ?",
+        "confirm" => "Confirmer",
+        "sure" => "Êtes-vous sûr de vouloir quitter le groupe ?",
+        "proceed" => "Procéder",
+    ],
+
+    'admin' => [
+        'title' => 'Admin',
+        'meta_desc' => 'Page d\'administration',
+        'meta_author' => 'L\'auteur',
+
+        'admin' => 'Admin',
+
+        'ban_user_title' => 'Bannir un utilisateur',
+        'ban_user_email_label' => 'Email de l\'utilisateur à bannir :',
+        'ban_user_button' => 'Bannir l\'utilisateur',
+
+        'unban_user_title' => 'Dé-bannir un utilisateur',
+        'unban_user_email_label' => 'Email de l\'utilisateur à dé-bannir :',
+        'unban_user_button' => 'Dé-bannir l\'utilisateur',
+
+        'delete_account_title' => 'Supprimer un compte',
+        'delete_account_email_label' => 'Email de l\'utilisateur à supprimer :',
+        'delete_account_button' => 'Supprimer le compte',
+
+        'create_article_title' => 'Créer un article',
+        'article_title_label' => 'Titre :',
+        'article_summary_label' => 'Résumé :',
+        'article_view_path_label' => 'Fichier Blade lié :',
+        'article_view_path_placeholder' => 'articles_list.NomDeLArticle',
+        'create_article_button' => 'Créer l\'article',
+    ],
+
+    "account" => [
+        "page_name" => "Compte",
+        "page_description" => "Ceci est la page de compte.",
+        "title" => "Paramètres du compte",
+        "change_username" => "Changer le nom d'utilisateur",
+        "new_username" => "Nouveau nom d'utilisateur",
+        "update_username" => "Mettre à jour le nom d'utilisateur",
+        "change_password" => "Changer le mot de passe",
+        "new_password" => "Nouveau mot de passe",
+        "confirm_password" => "Confirmer le mot de passe",
+        "update_password" => "Mettre à jour le mot de passe",
+    ],
+
+    'about' => [
+        'title' => 'Accueil',
+        'meta_desc' => 'Ceci est la description.',
+        'meta_author' => 'Je suis l\'auteur.',
+
+        'main_title' => 'À propos de ce projet',
+
+        'what_i_learned_title' => 'Ce que j\'ai appris',
+        'what_i_learned_text' => 'Pendant le développement de ce projet, j\'ai approfondi mes connaissances dans plusieurs domaines, notamment le framework Laravel, les bases de données PostgreSQL et les WebSockets avec Reverb. De plus, j\'ai amélioré mes compétences en PHP et JavaScript, ce qui m\'a permis de construire une application web entièrement fonctionnelle et interactive.',
+
+        'project_features_title' => 'Fonctionnalités du projet',
+        'project_features_intro' => 'Ce site web comprend les fonctionnalités clés suivantes :',
+
+        'feature_registration_login' => 'Système d\'inscription et de connexion permettant aux utilisateurs de créer un compte et d\'accéder au site en toute sécurité.',
+        'feature_update_account' => 'Possibilité pour les utilisateurs de modifier leur nom d\'utilisateur et mot de passe directement sur le site.',
+        'feature_multilanguage' => 'Système multilingue facile à étendre pour supporter plusieurs langues.',
+        'feature_discussion_groups' => 'Système de création et gestion de groupes de discussion, où les utilisateurs peuvent communiquer en temps réel.',
+        'feature_realtime_messaging' => 'Messagerie en temps réel dans les groupes, alimentée par les WebSockets, permettant une mise à jour automatique sans rafraîchissement.',
+        'feature_realtime_group_invites' => 'Mises à jour en temps réel pour les invitations aux groupes, notifiant instantanément les utilisateurs invités.',
+        'feature_system_messages' => 'Messages système dans les groupes qui notifient les membres d\'événements importants comme les entrées, sorties, invitations ou exclusions.',
+        'feature_dynamic_statistics' => 'Page de statistiques dynamique affichant des données en direct sur l\'utilisation et l\'activité du site.',
+        'feature_dynamic_articles' => 'Page des articles avec contenu mis à jour dynamiquement à chaque nouvelle publication.',
+        'feature_admin_panel' => 'Panneau d\'administration sécurisé permettant aux admins de bannir, débannir, supprimer des utilisateurs et créer des articles.',
+        'feature_data_cleanup' => 'Fonctionnalités supplémentaires comme le nettoyage automatique des données inutilisées — par exemple la suppression des messages et groupes sans membres.',
+        'feature_two_factor_auth' => 'Processus d\'inscription amélioré incluant une authentification à deux facteurs via un code de confirmation envoyé par email.',
+
+        'conclusion_title' => 'Conclusion',
+        'conclusion_text' => 'Ce projet a été une expérience enrichissante, combinant plusieurs technologies et concepts pour construire une application web complexe, en temps réel, avec une gestion avancée des utilisateurs et des fonctionnalités d\'administration. Il reflète non seulement ce que j\'ai appris, mais aussi ma passion pour créer des solutions web utiles et interactives.',
+
+        'source_inspiration_title' => 'Source & Inspiration',
+        'source_inspiration_text' => 'Inspiré et basé sur la documentation officielle de Laravel ainsi que des packages communautaires liés aux WebSockets et au support multilingue.',
+    ],
+
+    "stats" => [
+        "page_name" => "Statistiques",
+        "page_description" => "Ceci est la page des statistiques.",
+        "title" => "Statistiques",
+        "big_nb" => "Grands chiffres",
+        "nb_users" => "utilisateurs se sont inscrits sur la plateforme,",
+        "nb_conversations" => "conversations de groupe ont été créées,",
+        "and" => "et ",
+        "nb_messages" => "messages ont été échangés.",
+        "also" => "Il y a également actuellement",
+        "users_online" => "utilisateurs en ligne (rafraîchissement toutes les 5 minutes).",
+        "charts" => "Graphiques",
+        "per_days" => "Par jours",
+        "per_months" => "Par mois",
+    ],
+
+    "map" => [
+        "page_name" => "Carte Web",
+        "page_description" => "Ceci est la page de la carte web.",
+        "title" => "Carte Web",
+        "home" => "Accueil",
+        "about" => "À propos",
+        "contact" => "Contact",
+        "stats" => "Statistiques",
+        "map" => "Carte",
+        "signin" => "Connexion",
+        "email_check" => "Vérification email",
+        "email_send" => "Envoi email",
+        "channels" => "Canaux",
+        "add" => "Ajouter",
+        "members_list" => "Liste des membres",
+        "quit" => "Quitter",
+        "articles" => "Articles",
+        "tech" => "Tech",
+        "admin" => "Admin",
+    ],
+
+    "tech" => [
+        "page_name" => "Page technique",
+        "page_description" => "Ceci est la page technique.",
+        "title" => "Page technique",
+        "tests" => "Tests",
+        "user_ip" => "IP utilisateur",
+        "web_navigator" => "Navigateur web (User-agent)",
+        "country" => "Pays",
+        "city" => "Ville",
+        "lat" => "Latitude",
+        "long" => "Longitude",
+        "unknow" => "Inconnu",
+        "not_available" => "Non disponible",
+    ],
+
+];

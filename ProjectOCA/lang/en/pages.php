@@ -99,10 +99,31 @@ return [
         "proceed" => "Proceed",
     ],
 
-    "admin" => [
-        "page_name" => "Sign in",
-        "page_description" => "This is the Sign In page.",
-        "title" => "Sign In page",
+    'admin' => [
+        'title' => 'Admin',
+        'meta_desc' => 'Administration page',
+        'meta_author' => 'The author',
+
+        'admin' => 'Admin',
+
+        'ban_user_title' => 'Ban a user',
+        'ban_user_email_label' => 'Email of the user to ban:',
+        'ban_user_button' => 'Ban user',
+
+        'unban_user_title' => 'Unban a user',
+        'unban_user_email_label' => 'Email of the user to unban:',
+        'unban_user_button' => 'Unban user',
+
+        'delete_account_title' => 'Delete an account',
+        'delete_account_email_label' => 'Email of the user to delete:',
+        'delete_account_button' => 'Delete account',
+
+        'create_article_title' => 'Create an article',
+        'article_title_label' => 'Title:',
+        'article_summary_label' => 'Summary:',
+        'article_view_path_label' => 'Linked Blade file:',
+        'article_view_path_placeholder' => 'articles_list.NameOfTheArticles',
+        'create_article_button' => 'Create article',
     ],
 
     "account" => [
@@ -119,10 +140,37 @@ return [
 
     ],
 
-    "about" => [
-        "page_name" => "Sign in",
-        "page_description" => "This is the Sign In page.",
-        "title" => "Sign In page",
+    'about' => [
+        'title' => 'Home',
+        'meta_desc' => 'This is the description.',
+        'meta_author' => 'I am the author.',
+
+        'main_title' => 'About This Project',
+
+        'what_i_learned_title' => 'What I Learned',
+        'what_i_learned_text' => 'During the development of this project, I deepened my knowledge in several areas including the Laravel framework, PostgreSQL databases, and WebSockets using Reverb. Additionally, I improved my skills in PHP and JavaScript, which allowed me to build a fully functional and interactive web application.',
+
+        'project_features_title' => 'Project Features',
+        'project_features_intro' => 'This website includes the following key features:',
+
+        'feature_registration_login' => 'User registration and login system, allowing users to create accounts and securely access the site.',
+        'feature_update_account' => 'Ability for users to update their username and password directly on the site.',
+        'feature_multilanguage' => 'A multi-language system that is easy to extend to support additional languages.',
+        'feature_discussion_groups' => 'A system to create and manage discussion groups, where users can communicate in real-time.',
+        'feature_realtime_messaging' => 'Real-time messaging within groups, powered by WebSockets, enabling automatic message updates without page refreshes.',
+        'feature_realtime_group_invites' => 'Real-time updates for group invitations, so users are notified instantly when invited to a group.',
+        'feature_system_messages' => 'System messages within groups that notify members of important events such as users joining, leaving, being invited, or being removed from the group.',
+        'feature_dynamic_statistics' => 'A dynamic statistics page that displays live data about site usage and activity.',
+        'feature_dynamic_articles' => 'An articles page with content that updates dynamically as new articles are published.',
+        'feature_admin_panel' => 'A secure admin panel that allows administrators to ban, unban, delete users, and create new articles.',
+        'feature_data_cleanup' => 'Additional features like automatic cleanup of unused data in memory — for example, removing messages and groups when no members remain.',
+        'feature_two_factor_auth' => 'An enhanced account creation process including two-factor authentication via a confirmation code sent by email.',
+
+        'conclusion_title' => 'Conclusion',
+        'conclusion_text' => 'This project has been an enriching experience, combining multiple technologies and concepts to build a complex, real-time web application with strong user management and administration features. It reflects not only what I have learned but also my passion for creating useful and interactive web solutions.',
+
+        'source_inspiration_title' => 'Source & Inspiration',
+        'source_inspiration_text' => 'Inspired and based on the official Laravel documentation and community packages related to WebSockets and multi-language support.',
     ],
 
     "stats" => [
@@ -176,7 +224,5 @@ return [
         "unknow" => "Unknow",
         "not_available" => "Not available",
         ],
-
-
 
 ];

@@ -17,6 +17,8 @@ return [
         "language" => "Language",
         "french" => "French",
         "english" => "English",
+        "spanish" => "Spanish",
+        "chinese" => "Chinese",
     ],
 
     "footer" => [

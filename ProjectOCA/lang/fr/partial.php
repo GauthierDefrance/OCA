@@ -1,26 +1,32 @@
 <?php
 return [
 
+    "head" => [
+
+    ],
+
     "header" => [
         "Home" => "Accueil",
-        "Channels" => "Salons",
-        "Connection" => "Se connecter",
+        "Channels" => "Canaux",
+        "Connection" => "Connexion",
         "Admin" => "Admin",
-        "Accounts" => "Mon compte",
-        "logout" => "Se déconnecter",
+        "Accounts" => "Mes comptes",
+        "logout" => "Déconnexion",
         "language" => "Langue",
         "french" => "Français",
         "english" => "Anglais",
+        "spanish" => "Espagnol",
+        "chinese" => "Chinois",
     ],
 
     "footer" => [
-        "about" => "A propos",
+        "about" => "À propos",
         "contact" => "Contact",
         "articles" => "Articles",
         "stats" => "Statistiques",
         "webmap" => "Plan du site",
         "techpage" => "Page technique",
-        "findme" => "Trouvez moi sur",
+        "findme" => "Retrouvez-moi sur",
     ],
 
 ];

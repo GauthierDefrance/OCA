@@ -56,6 +56,14 @@
                             <img src="/icons/uk-flag.svg" alt="EnglishFlag" width="24" height="24" class="icon"/>
                             {{ __("partial.header.english") }}
                         </a></li>
+                    <li><a href="locale/es">
+                            <img src="/icons/spain-flag.svg" alt="SpainFlag" width="24" height="24" class="icon"/>
+                            {{ __("partial.header.spanish") }}
+                        </a></li>
+                    <li><a href="locale/ch">
+                            <img src="/icons/china-flag.svg" alt="SpainFlag" width="24" height="24" class="icon"/>
+                            {{ __("partial.header.chinese") }}
+                        </a></li>
                 </ul>
             </li>
 

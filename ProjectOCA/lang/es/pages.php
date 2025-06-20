@@ -1,0 +1,225 @@
+<?php
+
+return [
+
+    "home" => [
+        "page_name" => "Inicio",
+        "page_description" => "Esta es la página de inicio.",
+        "title" => "Página de inicio",
+        "guest_title" => "Bienvenido a OCA",
+        "guest_text" => "Para comenzar tu aventura debes iniciar sesión!",
+        "client_title" => "Bienvenido de nuevo",
+        "client_text" => "Contenido de la sección",
+        "new_articles_title" => "Nuevos artículos",
+        "articles_description" => "Contenido de la sección",
+    ],
+
+    "connect" => [
+        "page_name" => "Iniciar sesión",
+        "page_description" => "Esta es la página de inicio de sesión.",
+        "title" => "Página de inicio de sesión",
+        "Login" => "Iniciar sesión",
+        "Username" => "Nombre de usuario",
+        "Password" => "Contraseña",
+        "Confirm password" => "Confirmar contraseña",
+        "Email" => "Correo electrónico",
+        "Register" => "Registrarse",
+        "Confirm" => "Confirmar",
+        "LabelMail" => "Introduce tu correo electrónico",
+        "LabelPassword" => "Introduce tu contraseña",
+        "LabelPasswordConfirm" => "Confirma tu contraseña",
+        "LabelUsername" => "Introduce tu nombre de usuario",
+        "PlaceholderEmail" => "ejemplo@mail.com",
+        "PlaceholderUsername" => "mipseudo",
+        "LoginError" => "Correo o contraseña incorrectos",
+        "your_email" => "Tu correo",
+        "your_code" => "Tu código",
+        "input_email" => "Introduce tu correo",
+        "email_sender_desc" => "Esta página es para enviar un correo de verificación a tu dirección.",
+        "email_checker_desc" => "Esta página es para verificar un correo enviado a tu dirección.",
+        "email_check_title" => "Revisa tu correo",
+        "ask_for_link" => "¡Dame un nuevo enlace!",
+    ],
+
+    "contact" => [
+        "page_name" => "Contacto",
+        "page_description" => "Esta es la página de contacto.",
+        "text" => "Este es el lugar donde puedes saber más sobre mi trabajo",
+        "title" => "Página de contacto",
+        "contacts_list" => "Lista de contactos",
+        "github" => "Mi Github",
+        "youtube" => "Mi canal",
+        "gmail" => "Sin correo",
+    ],
+
+    "channels" => [
+        "page_name" => "Chat",
+        "page_description" => "Esta es la página de canales.",
+        "title" => "Página de canales",
+
+        "sidebar-menu-title" => "Canales",
+        "home-btn" => "Inicio",
+        "creategroup-btn" => "Crear un nuevo chat",
+        "invitation-btn" => "Tus invitaciones",
+        "block-btn" => "Bloquear",
+
+        "no_group_found" => "No se encontraron grupos.",
+        "group_without_title" => "Grupo sin título",
+    ],
+
+    "add" => [
+        "page_name" => "Chat",
+        "page_description" => "Esta es la página de canales.",
+        "title" => "Invitaciones enviadas",
+        "send_new_invite" => "Enviar una nueva invitación",
+        "email" => "Correo del usuario a invitar",
+        "send" => "Enviar invitación",
+        "invite_list" => "Lista de invitaciones enviadas",
+        "no_invite_found" => "No se encontraron invitaciones.",
+        "unknow" => "Correo desconocido",
+    ],
+
+    "members" => [
+        "page_name" => "Miembros del canal",
+        "page_description" => "Esta es la página de lista de miembros.",
+        "title" => "Lista de miembros del grupo",
+        "members_of_group" => "Miembros del grupo",
+        "moderator" => "Moderador",
+        "kick" => "Expulsar",
+    ],
+
+    "quit" => [
+        "page_name" => "Salir del canal",
+        "page_description" => "Esta es la página de canales.",
+        "title" => "¿Salir del grupo?",
+        "confirm" => "Confirmar",
+        "sure" => "¿Seguro que quieres salir del grupo?",
+        "proceed" => "Proceder",
+    ],
+
+    'admin' => [
+        'title' => 'Administrador',
+        'meta_desc' => 'Página de administración',
+        'meta_author' => 'El autor',
+
+        'admin' => 'Administrador',
+
+        'ban_user_title' => 'Bloquear usuario',
+        'ban_user_email_label' => 'Correo del usuario a bloquear:',
+        'ban_user_button' => 'Bloquear usuario',
+
+        'unban_user_title' => 'Desbloquear usuario',
+        'unban_user_email_label' => 'Correo del usuario a desbloquear:',
+        'unban_user_button' => 'Desbloquear usuario',
+
+        'delete_account_title' => 'Eliminar cuenta',
+        'delete_account_email_label' => 'Correo del usuario a eliminar:',
+        'delete_account_button' => 'Eliminar cuenta',
+
+        'create_article_title' => 'Crear artículo',
+        'article_title_label' => 'Título:',
+        'article_summary_label' => 'Resumen:',
+        'article_view_path_label' => 'Archivo Blade relacionado:',
+        'article_view_path_placeholder' => 'articles_list.NombreDelArticulo',
+        'create_article_button' => 'Crear artículo',
+    ],
+
+    "account" => [
+        "page_name" => "Cuenta",
+        "page_description" => "Esta es la página de cuenta.",
+        "title" => "Configuración de la cuenta",
+        "change_username" => "Cambiar nombre de usuario",
+        "new_username" => "Nuevo nombre de usuario",
+        "update_username" => "Actualizar nombre de usuario",
+        "change_password" => "Cambiar contraseña",
+        "new_password" => "Nueva contraseña",
+        "confirm_password" => "Confirmar contraseña",
+        "update_password" => "Actualizar contraseña",
+    ],
+
+    'about' => [
+        'title' => 'Inicio',
+        'meta_desc' => 'Esta es la descripción.',
+        'meta_author' => 'Soy el autor.',
+
+        'main_title' => 'Acerca de este proyecto',
+
+        'what_i_learned_title' => 'Lo que aprendí',
+        'what_i_learned_text' => 'Durante el desarrollo de este proyecto, profundicé mis conocimientos en varias áreas, incluyendo el framework Laravel, bases de datos PostgreSQL y WebSockets usando Reverb. Además, mejoré mis habilidades en PHP y JavaScript, lo que me permitió construir una aplicación web totalmente funcional e interactiva.',
+
+        'project_features_title' => 'Características del proyecto',
+        'project_features_intro' => 'Este sitio web incluye las siguientes características clave:',
+
+        'feature_registration_login' => 'Sistema de registro e inicio de sesión de usuarios, permitiendo a los usuarios crear cuentas y acceder de manera segura.',
+        'feature_update_account' => 'Capacidad para que los usuarios actualicen su nombre de usuario y contraseña directamente en el sitio.',
+        'feature_multilanguage' => 'Sistema multilingüe fácil de extender para soportar idiomas adicionales.',
+        'feature_discussion_groups' => 'Sistema para crear y gestionar grupos de discusión donde los usuarios pueden comunicarse en tiempo real.',
+        'feature_realtime_messaging' => 'Mensajería en tiempo real dentro de los grupos, impulsada por WebSockets, que permite actualizaciones automáticas sin recargar la página.',
+        'feature_realtime_group_invites' => 'Actualizaciones en tiempo real para invitaciones a grupos, notificando a los usuarios instantáneamente cuando son invitados.',
+        'feature_system_messages' => 'Mensajes del sistema dentro de los grupos que notifican a los miembros sobre eventos importantes como usuarios que se unen, salen, son invitados o eliminados.',
+        'feature_dynamic_statistics' => 'Página de estadísticas dinámica que muestra datos en vivo sobre el uso y actividad del sitio.',
+        'feature_dynamic_articles' => 'Página de artículos con contenido que se actualiza dinámicamente a medida que se publican nuevos artículos.',
+        'feature_admin_panel' => 'Panel de administración seguro que permite a los administradores bloquear, desbloquear, eliminar usuarios y crear nuevos artículos.',
+        'feature_data_cleanup' => 'Funciones adicionales como limpieza automática de datos no usados en memoria — por ejemplo, eliminación de mensajes y grupos sin miembros.',
+        'feature_two_factor_auth' => 'Proceso mejorado de creación de cuentas que incluye autenticación de dos factores mediante un código de confirmación enviado por correo electrónico.',
+
+        'conclusion_title' => 'Conclusión',
+        'conclusion_text' => 'Este proyecto ha sido una experiencia enriquecedora, combinando múltiples tecnologías y conceptos para construir una aplicación web compleja en tiempo real con una gestión sólida de usuarios y funciones administrativas. Refleja no solo lo que he aprendido sino también mi pasión por crear soluciones web útiles e interactivas.',
+
+        'source_inspiration_title' => 'Fuente e inspiración',
+        'source_inspiration_text' => 'Inspirado y basado en la documentación oficial de Laravel y paquetes comunitarios relacionados con WebSockets y soporte multilingüe.',
+    ],
+
+    "stats" => [
+        "page_name" => "Estadísticas",
+        "page_description" => "Esta es la página de estadísticas.",
+        "title" => "Estadísticas",
+        "big_nb" => "Números grandes",
+        "nb_users" => "usuarios se han registrado en la plataforma,",
+        "nb_conversations" => "conversaciones de grupo han sido creadas,",
+        "and" => "y ",
+        "nb_messages" => "mensajes han sido intercambiados.",
+        "also" => "También hay actualmente",
+        "users_online" => "usuarios en línea (se actualiza cada 5 minutos).",
+        "charts" => "Gráficos",
+        "per_days" => "Por días",
+        "per_months" => "Por meses",
+    ],
+
+    "map" => [
+        "page_name" => "Mapa Web",
+        "page_description" => "Esta es la página del mapa web.",
+        "title" => "Mapa Web",
+        "home" => "Inicio",
+        "about" => "Acerca de",
+        "contact" => "Contacto",
+        "stats" => "Estadísticas",
+        "map" => "Mapa",
+        "signin" => "Iniciar sesión",
+        "email_check" => "Verificación de correo",
+        "email_send" => "Enviar correo",
+        "channels" => "Canales",
+        "add" => "Agregar",
+        "members_list" => "Lista de miembros",
+        "quit" => "Salir",
+        "articles" => "Artículos",
+        "tech" => "Tecnología",
+        "admin" => "Admin",
+    ],
+
+    "tech" => [
+        "page_name" => "Página técnica",
+        "page_description" => "Esta es la página técnica.",
+        "title" => "Página técnica",
+        "tests" => "Pruebas",
+        "user_ip" => "IP del usuario",
+        "web_navigator" => "Navegador web (User-agent)",
+        "country" => "País",
+        "city" => "Ciudad",
+        "lat" => "Latitud",
+        "long" => "Longitud",
+        "unknow" => "Desconocido",
+        "not_available" => "No disponible",
+    ],
+
+];
